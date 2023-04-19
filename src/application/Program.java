@@ -22,7 +22,7 @@ public class Program {
         ChessMatch chessMatch = new ChessMatch();
         List<ChessPiece> captured = new ArrayList<>();
 
-        while (true) {
+        while (!chessMatch.getCheckMate()) {
 
             try {
                 UI.clearScreen();
@@ -52,19 +52,9 @@ public class Program {
                 System.out.println(e.getMessage());
                 sc.nextLine();
             }
-
-            UI.printBoard(chessMatch.getPieces());
-            System.out.println();
-            System.out.print("Source: ");
-            ChessPosition source = UI.readChessPosition(sc);
-
-            System.out.println();
-            System.out.print("Target: ");
-            ChessPosition target = UI.readChessPosition(sc);
-
-            ChessPiece capturedPiece = chessMatch.performChessMove(source, target);
-
         }
+        UI.clearScreen();
+        UI.printMatch(chessMatch, captured);
 
     }
 }
